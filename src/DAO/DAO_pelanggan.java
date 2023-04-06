@@ -24,16 +24,16 @@ import javax.swing.JOptionPane;
 public class DAO_pelanggan implements Model_DAO<Pelanggan> {
     
     public DAO_pelanggan(){
-        Connection connection = Database.connectionDB();
+        connection = Database.connectionDB();
     }
     
     Connection connection;
-    String INSERT   = "INSERT INTO pelanggan_2011501174 (kdplg, nmplg, alamatplg, telpplg) valuse (?,?,?,?)";
+    String INSERT   = "INSERT INTO pelanggan_2011501174 (kdplg, nmplg, alamatplg, telpplg) value (?,?,?,?)";
     String UPDATE   = "UPDATE pelanggan_2011501174 SET nmplg = ?, alamatplg = ?, telpplg = ? WHERE kdplg = ?";
-    String DELTE    = "DELTE FROM planggan_2011501174 where kdplg = ?";
-    String SELECT   = "SELECT * FROM planggan_2011501174";
-    String CARI     = "SELECT * FROM planggan_2011501174 WHERE kdplg LIKE ?";
-    String COUNTER  = "SELECT max(kdplg) as kode FROM planggan_2011501174";
+    String DELTE    = "DELTE FROM pelanggan_2011501174 where kdplg = ?";
+    String SELECT   = "SELECT * FROM pelanggan_2011501174";
+    String CARI     = "SELECT * FROM pelanggan_2011501174 WHERE kdplg LIKE ?";
+    String COUNTER  = "SELECT max(kdplg) as kode FROM pelanggan_2011501174";
 
     @Override
     public int autonumber(Pelanggan object) {
@@ -134,15 +134,34 @@ public class DAO_pelanggan implements Model_DAO<Pelanggan> {
                 Pelanggan p = new Pelanggan();
                 p.setKode(rs.getInt("kdplg"));
                 p.setNama(rs.getString("nmplg"));
-                p.setAlamat(rs.)
+                p.setAlamat(rs.getString("alamatplg"));
+                p.setTelp(rs.getString("telpplg"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DAO_pelanggan.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return list;
     }
 
     @Override
     public List<Pelanggan> getCari(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<Pelanggan> list = null;
+        PreparedStatement statement = null;
+        try {
+            list = new ArrayList<Pelanggan>();
+            statement = (PreparedStatement) connection.prepareStatement(CARI);
+            statement.setString(1, "%"+key+"%");
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()) {
+                Pelanggan p = new Pelanggan();
+                p.setKode(rs.getInt("kdplg"));
+                p.setNama(rs.getString("nmplg"));
+                p.setAlamat(rs.getString("alamatplg"));
+                p.setTelp(rs.getString("telpplg"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO_pelanggan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
 }

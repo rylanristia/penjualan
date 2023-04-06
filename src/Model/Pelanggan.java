@@ -45,4 +45,8 @@ public class Pelanggan {
     private String nama;
     private String alamat;
     private String telp;
+
+    public Object getTblplg() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

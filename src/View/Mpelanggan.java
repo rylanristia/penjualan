@@ -4,6 +4,8 @@
  */
 package View;
 
+import Controller.Controller_Pelanggan;
+import java.awt.event.KeyEvent;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -17,9 +19,14 @@ public class Mpelanggan extends javax.swing.JFrame {
     /**
      * Creates new form Mpelanggan
      */
+    
+    Controller_Pelanggan controller;
+    
     public Mpelanggan() {
         initComponents();
         setLocationRelativeTo(this);
+        controller = new Controller_Pelanggan(this);
+        controller.reset();
     }
 
     public JTable getTblplg() {
@@ -91,6 +98,20 @@ public class Mpelanggan extends javax.swing.JFrame {
 
         jLabel1.setText("Kode pelanggan");
 
+        txtkdplg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtkdplgMousePressed(evt);
+            }
+        });
+        txtkdplg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtkdplgKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtkdplgKeyReleased(evt);
+            }
+        });
+
         jLabel2.setText("Nama pelanggan");
 
         jLabel3.setText("Alamat Pelanggan");
@@ -102,24 +123,38 @@ public class Mpelanggan extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txtalamat);
 
         cmdsimpan.setText("Simpan");
+        cmdsimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdsimpanActionPerformed(evt);
+            }
+        });
 
         cmdubah.setText("Ubah");
+        cmdubah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdubahActionPerformed(evt);
+            }
+        });
 
         cmdhapus.setText("Hapus");
+        cmdhapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdhapusActionPerformed(evt);
+            }
+        });
 
         cmdbatal.setText("Batal");
-
-        tblplg.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        cmdbatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdbatalActionPerformed(evt);
             }
-        ));
+        });
+
+        tblplg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblplgMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(tblplg);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -181,9 +216,9 @@ public class Mpelanggan extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmdbatal)))
                 .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txttlp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txttlp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -191,6 +226,56 @@ public class Mpelanggan extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdsimpanActionPerformed
+        // TODO add your handling code here:
+        controller.insert();
+        controller.reset();
+    }//GEN-LAST:event_cmdsimpanActionPerformed
+
+    private void cmdubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdubahActionPerformed
+        // TODO add your handling code here:
+        controller.update();
+        controller.reset();
+    }//GEN-LAST:event_cmdubahActionPerformed
+
+    private void cmdhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdhapusActionPerformed
+        // TODO add your handling code here:
+        controller.delete();
+        controller.reset();
+    }//GEN-LAST:event_cmdhapusActionPerformed
+
+    private void cmdbatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdbatalActionPerformed
+        // TODO add your handling code here:
+        controller.reset();
+    }//GEN-LAST:event_cmdbatalActionPerformed
+
+    private void tblplgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblplgMouseClicked
+        // TODO add your handling code here:
+        controller.isiField(tblplg.getSelectedRow());
+        this.txtnmplg.requestFocus();
+    }//GEN-LAST:event_tblplgMouseClicked
+
+    private void txtkdplgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtkdplgMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtkdplgMousePressed
+
+    private void txtkdplgKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtkdplgKeyReleased
+        // TODO add your handling code here:
+        controller.isiTablecari();
+    }//GEN-LAST:event_txtkdplgKeyReleased
+
+    private void txtkdplgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtkdplgKeyPressed
+        // TODO add your handling code here:\
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (txtkdplg.getText().isEmpty()) {
+                controller.reset();
+            } else {
+                controller.isiTable();
+                this.txtnmplg.requestFocus();
+            }
+        }
+    }//GEN-LAST:event_txtkdplgKeyPressed
 
     /**
      * @param args the command line arguments

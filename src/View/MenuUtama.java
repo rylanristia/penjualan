@@ -118,6 +118,9 @@ public class MenuUtama extends javax.swing.JFrame {
 
     private void MPelangganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MPelangganActionPerformed
         // TODO add your handling code here:
+        View.Mpelanggan p = new View.Mpelanggan();
+        p.setVisible(true);
+        setLocationRelativeTo(this);
     }//GEN-LAST:event_MPelangganActionPerformed
 
     private void MBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MBarangActionPerformed
