@@ -37,6 +37,7 @@ public class MenuUtama extends javax.swing.JFrame {
         MPelanggan = new javax.swing.JMenuItem();
         Mkategori = new javax.swing.JMenuItem();
         Mbarang = new javax.swing.JMenuItem();
+        Mpetugas = new javax.swing.JMenuItem();
         MTransaksi = new javax.swing.JMenu();
         TBuktiPesan = new javax.swing.JMenuItem();
         MLaporan = new javax.swing.JMenu();
@@ -72,6 +73,14 @@ public class MenuUtama extends javax.swing.JFrame {
 
         Mbarang.setText("Entry barang");
         MMenu.add(Mbarang);
+
+        Mpetugas.setText("Entry petugas");
+        Mpetugas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MpetugasActionPerformed(evt);
+            }
+        });
+        MMenu.add(Mpetugas);
 
         jMenuBar1.add(MMenu);
 
@@ -134,6 +143,13 @@ public class MenuUtama extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_MExitMouseClicked
 
+    private void MpetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MpetugasActionPerformed
+        // TODO add your handling code here:
+        View.Mpetugas p = new View.Mpetugas();
+        p.setVisible(true);
+        setLocationRelativeTo(this);
+    }//GEN-LAST:event_MpetugasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -179,6 +195,7 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JMenu MTransaksi;
     private javax.swing.JMenuItem Mbarang;
     private javax.swing.JMenuItem Mkategori;
+    private javax.swing.JMenuItem Mpetugas;
     private javax.swing.JMenuItem TBuktiPesan;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

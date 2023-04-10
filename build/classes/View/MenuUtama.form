@@ -53,6 +53,14 @@
                 <Property name="text" type="java.lang.String" value="Entry barang"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="Mpetugas">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Entry petugas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MpetugasActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="MTransaksi">
