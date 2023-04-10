@@ -4,8 +4,9 @@
  */
 package DAO;
 
-import Model.Pelanggan;
 import Connect.Database;
+import Model.Kategori;
+import Model.Pelanggan;
 import com.mysql.jdbc.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,27 +17,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
 /**
  *
- * @author Praktek
+ * @author WINDOWS 10
  */
-public class DAO_pelanggan implements Model_DAO<Pelanggan> {
-    
-    public DAO_pelanggan(){
+public class DAO_kategori implements Model_DAO<Kategori> {
+    public DAO_kategori(){
         connection = Database.connectionDB();
     }
     
     Connection connection;
-    String INSERT   = "INSERT INTO pelanggan_2011501174 (kdplg, nmplg, alamatplg, telpplg) value (?,?,?,?)";
-    String UPDATE   = "UPDATE pelanggan_2011501174 SET nmplg = ?, alamatplg = ?, telpplg = ? WHERE kdplg = ?";
-    String DELTE    = "DELTE FROM pelanggan_2011501174 where kdplg = ?";
-    String SELECT   = "SELECT * FROM pelanggan_2011501174";
-    String CARI     = "SELECT * FROM pelanggan_2011501174 WHERE kdplg LIKE ?";
-    String COUNTER  = "SELECT max(kdplg) as kode FROM pelanggan_2011501174";
+    String INSERT   = "INSERT INTO kategori_2011501174 (kdkategori, nmkategori) value (?,?)";
+    String UPDATE   = "UPDATE kategori_2011501174 SET nmkategori = ? WHERE kdkategori = ?";
+    String DELTE    = "DELTE FROM kategori_2011501174 where kdkatgeori = ?";
+    String SELECT   = "SELECT * FROM kategori_2011501174";
+    String CARI     = "SELECT * FROM kategori_2011501174 WHERE kdkategori LIKE ?";
+    String COUNTER  = "SELECT max(kdkategori) as kode FROM kategori_2011501174";
 
     @Override
-    public int autonumber(Pelanggan object) {
+    public int autonumber(Kategori object) {
         PreparedStatement statement = null;
         int nomor = 0;
         try {
@@ -52,7 +51,7 @@ public class DAO_pelanggan implements Model_DAO<Pelanggan> {
     }
 
     @Override
-    public void insert(Pelanggan object) {
+    public void insert(Kategori object) {
         PreparedStatement statement = null;
         try {
             statement = (PreparedStatement) connection.prepareStatement(CARI);
@@ -65,8 +64,6 @@ public class DAO_pelanggan implements Model_DAO<Pelanggan> {
                 statement2 = (PreparedStatement) connection.prepareStatement(INSERT);
                 statement2.setInt(1, object.getKode());
                 statement2.setString(2, object.getNama());
-                statement2.setString(3, object.getAlamat());
-                statement2.setString(4, object.getTelp());
                 statement2.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Data berhasul disimpan!");
             }
@@ -76,20 +73,18 @@ public class DAO_pelanggan implements Model_DAO<Pelanggan> {
             try {
                 statement.close();
             } catch (SQLException ex) {
-                Logger.getLogger(DAO_pelanggan.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DAO_kategori.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     } 
 
     @Override
-    public void update(Pelanggan object) {
+    public void update(Kategori object) {
         PreparedStatement statement = null;
         try {
             statement = (PreparedStatement) connection.prepareStatement(UPDATE);            
             statement.setString(1, object.getNama());
-            statement.setString(2, object.getAlamat());
-            statement.setString(3, object.getTelp());
-            statement.setInt(4, object.getKode());
+            statement.setInt(2, object.getKode());
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Data berhasul diubah!");
         } catch (SQLException ex) {
@@ -98,7 +93,7 @@ public class DAO_pelanggan implements Model_DAO<Pelanggan> {
             try {
                 statement.close();
             } catch (SQLException ex) {
-                Logger.getLogger(DAO_pelanggan.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DAO_kategori.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -117,51 +112,47 @@ public class DAO_pelanggan implements Model_DAO<Pelanggan> {
             try {
                 statement.close();
             } catch (SQLException ex) {
-                Logger.getLogger(DAO_pelanggan.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DAO_kategori.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
 
     @Override
-    public List<Pelanggan> getAll() {
-        List<Pelanggan> list = null;
+    public List<Kategori> getAll() {
+        List<Kategori> list = null;
         PreparedStatement statement = null;
         try {
-            list = new ArrayList<Pelanggan>();
+            list = new ArrayList<Kategori>();
             statement = (PreparedStatement) connection.prepareStatement(SELECT);
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
-                Pelanggan p = new Pelanggan();
-                p.setKode(rs.getInt("kdplg"));
-                p.setNama(rs.getString("nmplg"));
-                p.setAlamat(rs.getString("alamatplg"));
-                p.setTelp(rs.getString("telpplg"));
+                Kategori p = new Kategori();
+                p.setKode(rs.getInt("kdkategori"));
+                p.setNama(rs.getString("nmkategori"));
                 list.add(p);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DAO_pelanggan.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAO_kategori.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
 
     @Override
-    public List<Pelanggan> getCari(String key) {
-        List<Pelanggan> list = null;
+    public List<Kategori> getCari(String key) {
+        List<Kategori> list = null;
         PreparedStatement statement = null;
         try {
-            list = new ArrayList<Pelanggan>();
+            list = new ArrayList<Kategori>();
             statement = (PreparedStatement) connection.prepareStatement(CARI);
             statement.setString(1, "%"+key+"%");
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
-                Pelanggan p = new Pelanggan();
-                p.setKode(rs.getInt("kdplg"));
-                p.setNama(rs.getString("nmplg"));
-                p.setAlamat(rs.getString("alamatplg"));
-                p.setTelp(rs.getString("telpplg"));
+                Kategori p = new Kategori();
+                p.setKode(rs.getInt("kdkategori"));
+                p.setNama(rs.getString("nmkategori"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DAO_pelanggan.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAO_kategori.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }

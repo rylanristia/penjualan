@@ -35,8 +35,8 @@ public class MenuUtama extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         MMenu = new javax.swing.JMenu();
         MPelanggan = new javax.swing.JMenuItem();
-        MBarang = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        Mkategori = new javax.swing.JMenuItem();
+        Mbarang = new javax.swing.JMenuItem();
         MTransaksi = new javax.swing.JMenu();
         TBuktiPesan = new javax.swing.JMenuItem();
         MLaporan = new javax.swing.JMenu();
@@ -62,16 +62,16 @@ public class MenuUtama extends javax.swing.JFrame {
         });
         MMenu.add(MPelanggan);
 
-        MBarang.setText("Entry kategori");
-        MBarang.addActionListener(new java.awt.event.ActionListener() {
+        Mkategori.setText("Entry kategori");
+        Mkategori.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MBarangActionPerformed(evt);
+                MkategoriActionPerformed(evt);
             }
         });
-        MMenu.add(MBarang);
+        MMenu.add(Mkategori);
 
-        jMenuItem4.setText("Entry barang");
-        MMenu.add(jMenuItem4);
+        Mbarang.setText("Entry barang");
+        MMenu.add(Mbarang);
 
         jMenuBar1.add(MMenu);
 
@@ -123,9 +123,12 @@ public class MenuUtama extends javax.swing.JFrame {
         setLocationRelativeTo(this);
     }//GEN-LAST:event_MPelangganActionPerformed
 
-    private void MBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MBarangActionPerformed
+    private void MkategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MkategoriActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MBarangActionPerformed
+        View.Mkategori p = new View.Mkategori();
+        p.setVisible(true);
+        setLocationRelativeTo(this);
+    }//GEN-LAST:event_MkategoriActionPerformed
 
     private void MExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MExitMouseClicked
         System.exit(0);
@@ -169,17 +172,17 @@ public class MenuUtama extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem LBarang;
     private javax.swing.JMenuItem LPelanggan;
-    private javax.swing.JMenuItem MBarang;
     private javax.swing.JMenu MExit;
     private javax.swing.JMenu MLaporan;
     private javax.swing.JMenu MMenu;
     private javax.swing.JMenuItem MPelanggan;
     private javax.swing.JMenu MTransaksi;
+    private javax.swing.JMenuItem Mbarang;
+    private javax.swing.JMenuItem Mkategori;
     private javax.swing.JMenuItem TBuktiPesan;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }
