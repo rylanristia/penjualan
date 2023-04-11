@@ -72,6 +72,11 @@ public class MenuUtama extends javax.swing.JFrame {
         MMenu.add(Mkategori);
 
         Mbarang.setText("Entry barang");
+        Mbarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MbarangActionPerformed(evt);
+            }
+        });
         MMenu.add(Mbarang);
 
         Mpetugas.setText("Entry petugas");
@@ -149,6 +154,13 @@ public class MenuUtama extends javax.swing.JFrame {
         p.setVisible(true);
         setLocationRelativeTo(this);
     }//GEN-LAST:event_MpetugasActionPerformed
+
+    private void MbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MbarangActionPerformed
+        // TODO add your handling code here:
+        View.Mbarang p = new View.Mbarang();
+        p.setVisible(true);
+        setLocationRelativeTo(this);
+    }//GEN-LAST:event_MbarangActionPerformed
 
     /**
      * @param args the command line arguments
