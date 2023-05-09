@@ -4,7 +4,7 @@
  */
 package Controller;
 
-import DAO.DAO_barang;
+import DAO.DAO_ukuran;
 import DAO.Model_DAO;
 import Model.Ukuran;
 import View.Mukuran;
@@ -25,30 +25,26 @@ public class Controller_Ukuran {
     
     public Controller_Ukuran(Mukuran form) {
         this.form = form;
-        model = new DAO_barang();
+        model = new DAO_ukuran();
         list = model.getAll();
-        header = new String[]{"KODE BARANG", "KATEGORI BARANG", "NAMA BARANG", "SATUAN", "STOK", "HARGA BARANG"};
+        header = new String[]{"KODE UKURAN", "NAMA UKURAN"};
         
-        form.getTblbrg().setShowGrid(true);
-        form.getTblbrg().setShowVerticalLines(true);
-        form.getTblbrg().setGridColor(Color.blue);
+        form.getTblukuran().setShowGrid(true);
+        form.getTblukuran().setShowVerticalLines(true);
+        form.getTblukuran().setGridColor(Color.blue);
     }
     
     public void tampilurutcode(){
         Ukuran p = new Ukuran();
         model.autonumber(p);
-        form.getTxtkdbrg().setText(String.valueOf(model.autonumber(p)));
+        form.getTxtkdukuran().setText(String.valueOf(model.autonumber(p)));
     }
     
     public void reset() {
-        form.getTxtkdbrg().setText("");
-        form.getTxtnmbrg().setText("");
-        form.getTxtsatuan().setText("");
-        form.getTxtstok().setText("");
-        form.getTxtharga().setText("");
-        form.getTxtkategori().setText("");
+        form.getTxtkdukuran().setText("");
+        form.getTxtnmukuran().setText("");
         
-        form.getTxtnmbrg().requestFocus();
+        form.getTxtnmukuran().requestFocus();
         tampilurutcode();
         isiTable();
     }
@@ -66,76 +62,39 @@ public class Controller_Ukuran {
         Object[] data = new Object[header.length];
         for (Ukuran p : list) {
             data[0] = p.getKode();
-            data[1] = p.getNama();
-            data[2] = p.getSatuan();
-            data[3] = p.getStok();
-            data[4] = p.getHarga();
-            data[5] = p.getKategori();
+            data[1] = p.getUkuran();
             
             tblModel.addRow(data);
         }
         
-        form.getTblbrg().setModel(tblModel);
+        form.getTblukuran().setModel(tblModel);
     }
 
     public void isiField(int row) {
-        form.getTxtkdbrg().setText(String.valueOf(list.get(row).getKode()));
-        form.getTxtnmbrg().setText(list.get(row).getNama());
-        form.getTxtsatuan().setText(list.get(row).getSatuan());
-        form.getTxtstok().setText(String.valueOf(list.get(row).getStok()));
-        form.getTxtharga().setText(String.valueOf(list.get(row).getHarga()));
-        form.getTxtkategori().setText(String.valueOf(list.get(row).getHarga()));
+        form.getTxtkdukuran().setText(String.valueOf(list.get(row).getKode()));
+        form.getTxtnmukuran().setText(list.get(row).getUkuran());
     }
     
     
     public void insert() {
         Ukuran p = new Ukuran();
-        p.setKode(Integer.parseInt(form.getTxtkdbrg().getText()));
-        p.setNama(form.getTxtnmbrg().getText());
-        p.setSatuan(form.getTxtsatuan().getText());
-        p.setStok(Integer.parseInt(form.getTxtstok().getText()));
-        p.setHarga(Integer.parseInt(form.getTxtharga().getText()));
-        p.setKategori(form.getTxtkategori().getText());
+        p.setKode(Integer.parseInt(form.getTxtkdukuran().getText()));
+        p.setUkuran(form.getTxtnmukuran().getText());
         
         model.insert(p);
     }
     
-    public void update() {
-        Ukuran p = new Ukuran();
-        p.setKode(Integer.parseInt(form.getTxtkdbrg().getText()));
-        p.setNama(form.getTxtnmbrg().getText());
-        p.setSatuan(form.getTxtsatuan().getText());
-        p.setStok(Integer.parseInt(form.getTxtstok().getText()));
-        p.setHarga(Integer.parseInt(form.getTxtharga().getText()));
-        p.setKategori(form.getTxtkategori().getText());
-        
-        model.update(p);
-    }
-    
-    public void delete() {
-        if(!form.getTxtkdbrg().getText().trim().isEmpty()){
-            int kode = Integer.parseInt(form.getTxtkdbrg().getText());
-            model.delete(kode);
-        } else {
-            JOptionPane.showMessageDialog(form, "Pilih data yang akan dihapus!");
-        }
-    }
-    
     public void isiTablecari() {
-        list = model.getCari(form.getTxtkdbrg().getText().trim());
+        list = model.getCari(form.getTxtkdukuran().getText().trim());
         DefaultTableModel tblModel = new DefaultTableModel(new Object[][] {}, header);
         Object[] data = new Object[header.length];
         for (Ukuran p : list) {
             data[0] = p.getKode();
-            data[1] = p.getNama();
-            data[2] = p.getSatuan();
-            data[3] = p.getStok();
-            data[4] = p.getHarga();
-            data[5] = p.getKategori();
+            data[1] = p.getUkuran();
             
             tblModel.addRow(data);
         }
         
-        form.getTblbrg().setModel(tblModel);
+        form.getTblukuran().setModel(tblModel);
     }
 }

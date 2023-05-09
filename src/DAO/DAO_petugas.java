@@ -30,7 +30,7 @@ public class DAO_petugas implements Model_DAO<Petugas>  {
     Connection connection;
     String INSERT   = "INSERT INTO petugas_2011501174 (kdpetugas, nmpetugas, alamatpetugas, telppetugas) value (?,?,?,?)";
     String UPDATE   = "UPDATE petugas_2011501174 SET nmpetugas = ?, alamatpetugas = ?, telppetugas = ? WHERE kdpetugas = ?";
-    String DELTE    = "DELTE FROM petugas_2011501174 where kdpetugas = ?";
+    String DELETE   = "DELETE FROM petugas_2011501174 where kdpetugas = ?";
     String SELECT   = "SELECT * FROM petugas_2011501174";
     String CARI     = "SELECT * FROM petugas_2011501174 WHERE kdpetugas LIKE ?";
     String COUNTER  = "SELECT max(kdpetugas) as kode FROM petugas_2011501174";

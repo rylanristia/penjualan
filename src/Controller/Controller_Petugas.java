@@ -28,7 +28,7 @@ public class Controller_Petugas {
         this.form = form;
         model = new DAO_petugas();
         list = model.getAll();
-        header = new String[]{"KODE", "NAMA PETUGAS", "ALAMAT", "TELEPON"};
+        header = new String[]{"KODE PETUGAS", "NAMA PETUGAS", "ALAMAT", "TELEPON"};
         
         form.getTblpetugas().setShowGrid(true);
         form.getTblpetugas().setShowVerticalLines(true);

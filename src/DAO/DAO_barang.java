@@ -93,6 +93,7 @@ public class DAO_barang implements Model_DAO<Barang> {
             statement.setInt(4, object.getHarga());
             statement.setInt(5, object.getStok());
             statement.setString(6, object.getKategori());
+            statement.setInt(7, object.getKode());
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Data berhasul diubah!");
         } catch (SQLException ex) {
@@ -110,7 +111,7 @@ public class DAO_barang implements Model_DAO<Barang> {
     public void delete(Integer id) {
         PreparedStatement statement = null;
         try {
-            statement = (PreparedStatement) connection.prepareStatement(INSERT);            
+            statement = (PreparedStatement) connection.prepareStatement(DELTE);            
             statement.setInt(1, id);
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Data berhasul diubah!");

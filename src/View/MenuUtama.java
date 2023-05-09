@@ -173,6 +173,9 @@ public class MenuUtama extends javax.swing.JFrame {
 
     private void MukuranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MukuranActionPerformed
         // TODO add your handling code here:
+        View.Mukuran p = new View.Mukuran();
+        p.setVisible(true);
+        setLocationRelativeTo(this);
     }//GEN-LAST:event_MukuranActionPerformed
 
     /**

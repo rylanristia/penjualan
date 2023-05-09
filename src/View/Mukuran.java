@@ -4,6 +4,12 @@
  */
 package View;
 
+import Controller.Controller_Petugas;
+import Controller.Controller_Ukuran;
+import java.awt.event.KeyEvent;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Praktek
@@ -13,10 +19,29 @@ public class Mukuran extends javax.swing.JFrame {
     /**
      * Creates new form Mukuran
      */
+    
+    Controller_Ukuran controller;
+    
     public Mukuran() {
         initComponents();
+        setLocationRelativeTo(this);
+        controller = new Controller_Ukuran(this);
+        controller.reset();
+        
+    }
+    
+    public JTable getTblukuran() {
+        return tblukuran;
     }
 
+    public JTextField getTxtkdukuran() {
+        return txtkdukuran;
+    }
+
+    public JTextField getTxtnmukuran() {
+        return txtnmukuran;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,12 +55,12 @@ public class Mukuran extends javax.swing.JFrame {
         jTextPane1 = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtkdpetugas = new javax.swing.JTextField();
-        txtnmpetugas = new javax.swing.JTextField();
+        txtkdukuran = new javax.swing.JTextField();
+        txtnmukuran = new javax.swing.JTextField();
         cmdsimpan = new javax.swing.JButton();
         cmdbatal = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tblpetugas = new javax.swing.JTable();
+        tblukuran = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,17 +71,17 @@ public class Mukuran extends javax.swing.JFrame {
 
         jLabel2.setText("Ukuran");
 
-        txtkdpetugas.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtkdukuran.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtkdpetugasMousePressed(evt);
+                txtkdukuranMousePressed(evt);
             }
         });
-        txtkdpetugas.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtkdukuran.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtkdpetugasKeyPressed(evt);
+                txtkdukuranKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtkdpetugasKeyReleased(evt);
+                txtkdukuranKeyReleased(evt);
             }
         });
 
@@ -74,12 +99,12 @@ public class Mukuran extends javax.swing.JFrame {
             }
         });
 
-        tblpetugas.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblukuran.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblpetugasMouseClicked(evt);
+                tblukuranMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(tblpetugas);
+        jScrollPane4.setViewportView(tblukuran);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,9 +123,9 @@ public class Mukuran extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(71, 71, 71)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtnmpetugas, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+                            .addComponent(txtnmukuran, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtkdpetugas, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtkdukuran, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,11 +145,11 @@ public class Mukuran extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtkdpetugas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtkdukuran, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtnmpetugas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtnmukuran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdsimpan)
@@ -137,26 +162,26 @@ public class Mukuran extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtkdpetugasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtkdpetugasMousePressed
+    private void txtkdukuranMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtkdukuranMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtkdpetugasMousePressed
+    }//GEN-LAST:event_txtkdukuranMousePressed
 
-    private void txtkdpetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtkdpetugasKeyPressed
+    private void txtkdukuranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtkdukuranKeyPressed
         // TODO add your handling code here:\
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            if (txtkdpetugas.getText().isEmpty()) {
+            if (txtkdukuran.getText().isEmpty()) {
                 controller.reset();
             } else {
                 controller.isiTable();
-                this.txtnmpetugas.requestFocus();
+                this.txtnmukuran.requestFocus();
             }
         }
-    }//GEN-LAST:event_txtkdpetugasKeyPressed
+    }//GEN-LAST:event_txtkdukuranKeyPressed
 
-    private void txtkdpetugasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtkdpetugasKeyReleased
+    private void txtkdukuranKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtkdukuranKeyReleased
         // TODO add your handling code here:
         controller.isiTablecari();
-    }//GEN-LAST:event_txtkdpetugasKeyReleased
+    }//GEN-LAST:event_txtkdukuranKeyReleased
 
     private void cmdsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdsimpanActionPerformed
         // TODO add your handling code here:
@@ -169,11 +194,11 @@ public class Mukuran extends javax.swing.JFrame {
         controller.reset();
     }//GEN-LAST:event_cmdbatalActionPerformed
 
-    private void tblpetugasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblpetugasMouseClicked
+    private void tblukuranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblukuranMouseClicked
         // TODO add your handling code here:
-        controller.isiField(tblpetugas.getSelectedRow());
-        this.txtnmpetugas.requestFocus();
-    }//GEN-LAST:event_tblpetugasMouseClicked
+        controller.isiField(tblukuran.getSelectedRow());
+        this.txtnmukuran.requestFocus();
+    }//GEN-LAST:event_tblukuranMouseClicked
 
     /**
      * @param args the command line arguments
@@ -218,8 +243,9 @@ public class Mukuran extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTable tblpetugas;
-    private javax.swing.JTextField txtkdpetugas;
-    private javax.swing.JTextField txtnmpetugas;
+    private javax.swing.JTable tblukuran;
+    private javax.swing.JTextField txtkdukuran;
+    private javax.swing.JTextField txtnmukuran;
     // End of variables declaration//GEN-END:variables
+
 }

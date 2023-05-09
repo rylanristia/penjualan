@@ -30,7 +30,7 @@ public class DAO_pelanggan implements Model_DAO<Pelanggan> {
     Connection connection;
     String INSERT   = "INSERT INTO pelanggan_2011501174 (kdplg, nmplg, alamatplg, telpplg) value (?,?,?,?)";
     String UPDATE   = "UPDATE pelanggan_2011501174 SET nmplg = ?, alamatplg = ?, telpplg = ? WHERE kdplg = ?";
-    String DELTE    = "DELTE FROM pelanggan_2011501174 where kdplg = ?";
+    String DELETE    = "DELETE FROM pelanggan_2011501174 where kdplg = ?";
     String SELECT   = "SELECT * FROM pelanggan_2011501174";
     String CARI     = "SELECT * FROM pelanggan_2011501174 WHERE kdplg LIKE ?";
     String COUNTER  = "SELECT max(kdplg) as kode FROM pelanggan_2011501174";
@@ -107,7 +107,7 @@ public class DAO_pelanggan implements Model_DAO<Pelanggan> {
     public void delete(Integer id) {
         PreparedStatement statement = null;
         try {
-            statement = (PreparedStatement) connection.prepareStatement(INSERT);            
+            statement = (PreparedStatement) connection.prepareStatement(DELETE);            
             statement.setInt(1, id);
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Data berhasul diubah!");
