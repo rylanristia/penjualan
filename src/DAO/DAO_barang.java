@@ -28,8 +28,8 @@ public class DAO_barang implements Model_DAO<Barang> {
     
     Connection connection;
     String INSERT   = "INSERT INTO barang_2011501174 (kdbrg, nmbrg, satuan, hargabrg, stok, kdkategori) value (?,?,?,?,?,?)";
-    String UPDATE   = "UPDATE barang_2011501174 SET nmbrg = ?, nmbrg = ?, satuan = ?, hargabrg = ?, stok = ?, kdkategori = ? WHERE kdbrg = ?";
-    String DELTE    = "DELTE FROM barang_2011501174 where kdbrg = ?";
+    String UPDATE   = "UPDATE barang_2011501174 SET nmbrg = ?, satuan = ?, hargabrg = ?, stok = ?, kdkategori = ? WHERE kdbrg = ?";
+    String DELTE    = "DELETE FROM barang_2011501174 where kdbrg = ?";
     String SELECT   = "SELECT * FROM barang_2011501174";
     String CARI     = "SELECT * FROM barang_2011501174 WHERE kdbrg LIKE ?";
     String COUNTER  = "SELECT max(kdbrg) as kode FROM barang_2011501174";
@@ -88,12 +88,11 @@ public class DAO_barang implements Model_DAO<Barang> {
         try {
             statement = (PreparedStatement) connection.prepareStatement(UPDATE);            
             statement.setString(1, object.getNama());
-            statement.setInt(2, object.getKode());
-            statement.setString(3, object.getSatuan());
-            statement.setInt(4, object.getHarga());
-            statement.setInt(5, object.getStok());
-            statement.setString(6, object.getKategori());
-            statement.setInt(7, object.getKode());
+            statement.setString(2, object.getSatuan());
+            statement.setInt(3, object.getHarga());
+            statement.setInt(4, object.getStok());
+            statement.setString(5, object.getKategori());
+            statement.setInt(6, object.getKode());
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Data berhasul diubah!");
         } catch (SQLException ex) {
@@ -114,7 +113,7 @@ public class DAO_barang implements Model_DAO<Barang> {
             statement = (PreparedStatement) connection.prepareStatement(DELTE);            
             statement.setInt(1, id);
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Data berhasul diubah!");
+            JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {

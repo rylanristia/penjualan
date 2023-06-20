@@ -107,10 +107,10 @@ public class DAO_petugas implements Model_DAO<Petugas>  {
     public void delete(Integer id) {
         PreparedStatement statement = null;
         try {
-            statement = (PreparedStatement) connection.prepareStatement(INSERT);            
+            statement = (PreparedStatement) connection.prepareStatement(DELETE);            
             statement.setInt(1, id);
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Data berhasul diubah!");
+            JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {

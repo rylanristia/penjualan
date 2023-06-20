@@ -30,7 +30,7 @@ public class DAO_pelanggan implements Model_DAO<Pelanggan> {
     Connection connection;
     String INSERT   = "INSERT INTO pelanggan_2011501174 (kdplg, nmplg, alamatplg, telpplg) value (?,?,?,?)";
     String UPDATE   = "UPDATE pelanggan_2011501174 SET nmplg = ?, alamatplg = ?, telpplg = ? WHERE kdplg = ?";
-    String DELETE    = "DELETE FROM pelanggan_2011501174 where kdplg = ?";
+    String DELETE   = "DELETE FROM pelanggan_2011501174 where kdplg = ?";
     String SELECT   = "SELECT * FROM pelanggan_2011501174";
     String CARI     = "SELECT * FROM pelanggan_2011501174 WHERE kdplg LIKE ?";
     String COUNTER  = "SELECT max(kdplg) as kode FROM pelanggan_2011501174";
@@ -91,7 +91,7 @@ public class DAO_pelanggan implements Model_DAO<Pelanggan> {
             statement.setString(3, object.getTelp());
             statement.setInt(4, object.getKode());
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Data berhasul diubah!");
+            JOptionPane.showMessageDialog(null, "Data berhasil diubah!");
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
@@ -110,7 +110,7 @@ public class DAO_pelanggan implements Model_DAO<Pelanggan> {
             statement = (PreparedStatement) connection.prepareStatement(DELETE);            
             statement.setInt(1, id);
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Data berhasul diubah!");
+            JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {

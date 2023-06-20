@@ -29,7 +29,7 @@ public class DAO_kategori implements Model_DAO<Kategori> {
     Connection connection;
     String INSERT   = "INSERT INTO kategori_2011501174 (kdkategori, nmkategori) value (?,?)";
     String UPDATE   = "UPDATE kategori_2011501174 SET nmkategori = ? WHERE kdkategori = ?";
-    String DELETE    = "DELETE FROM kategori_2011501174 where kdkatgeori = ?";
+    String DELETE   = "DELETE FROM kategori_2011501174 where kdkategori = ?";
     String SELECT   = "SELECT * FROM kategori_2011501174";
     String CARI     = "SELECT * FROM kategori_2011501174 WHERE kdkategori LIKE ?";
     String COUNTER  = "SELECT max(kdkategori) as kode FROM kategori_2011501174";
@@ -105,7 +105,7 @@ public class DAO_kategori implements Model_DAO<Kategori> {
             statement = (PreparedStatement) connection.prepareStatement(DELETE);            
             statement.setInt(1, id);
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Data berhasul diubah!");
+            JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
