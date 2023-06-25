@@ -101,6 +101,11 @@ public class MenuUtama extends javax.swing.JFrame {
         MTransaksi.setText("Transaksi");
 
         TBuktiPesan.setText("Bukti pesanan");
+        TBuktiPesan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TBuktiPesanActionPerformed(evt);
+            }
+        });
         MTransaksi.add(TBuktiPesan);
 
         jMenuBar1.add(MTransaksi);
@@ -177,6 +182,14 @@ public class MenuUtama extends javax.swing.JFrame {
         p.setVisible(true);
         setLocationRelativeTo(this);
     }//GEN-LAST:event_MukuranActionPerformed
+
+    private void TBuktiPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TBuktiPesanActionPerformed
+        // TODO add your handling code here:
+        View.TBuktiPesan t = new View.TBuktiPesan();
+        t.setVisible(true);
+        setLocationRelativeTo(this);
+        t.getTxtkdplg().requestFocus();
+    }//GEN-LAST:event_TBuktiPesanActionPerformed
 
     /**
      * @param args the command line arguments

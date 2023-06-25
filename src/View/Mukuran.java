@@ -62,7 +62,7 @@ public class Mukuran extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tblukuran = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTextPane1.setText("ENTRY DATA UKURAN BARANG");
         jScrollPane1.setViewportView(jTextPane1);

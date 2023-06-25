@@ -91,7 +91,7 @@ public class Mpelanggan extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTextPane1.setText("ENTRY DATA PELANGGAN");
         jScrollPane1.setViewportView(jTextPane1);

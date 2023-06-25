@@ -64,7 +64,7 @@ public class Mkategori extends javax.swing.JFrame {
         tblkategori = new javax.swing.JTable();
         cmdsimpan = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTextPane1.setText("ENTRY KATEGORI BARANG");
         jScrollPane1.setViewportView(jTextPane1);
